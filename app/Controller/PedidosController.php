@@ -10,7 +10,7 @@ App::uses('CakeEmail', 'Network/Email');
 class PedidosController extends AppController {
 
     public $uses= array('Cliente', 'Pedido','Item', 'Status', 'Entradapedido', 'Historico', 'Produto');
-    var $components = array('Zip', 'Email');
+    var $components = array('Email');
 /**
  * index method
  *
@@ -527,7 +527,7 @@ class PedidosController extends AppController {
             
 			if ($this->Pedido->save($this->request->data)) {
 				$this->Session->setFlash(__('Prioridade Inserida com sucesso'));
-				$this->redirect(array('controller' => 'pedidos', 'action' => 'listar'));
+				$this->redirect(array('action' => 'listar'));
 			} else {
 				$this->Session->setFlash(__('Não foi possivel inserir prioridade. Tente novamente'));
 			}
@@ -581,7 +581,7 @@ class PedidosController extends AppController {
                           mail("jefersonsilva@ediouro.com.br", "Pedido cancelado", "Seu pedido foi cancelado");
                           
                           
-                          $this->redirect(array('controller' => 'pedidos', 'action' => 'listar'));
+                          $this->redirect(array('action' => 'listar'));
 
                           
 

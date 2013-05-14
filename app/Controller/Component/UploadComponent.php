@@ -33,7 +33,7 @@ var $logErro = ""; //Log de erro
 
 function startup(&$controller){
 
-$this->path = APP . WEBROOT_DIR . DS;
+//$this->path = APP . WEBROOT_DIR . DS;
 
 $this->maxSize = 2*1024*1024; // 2MB
 
@@ -152,10 +152,13 @@ return $passed;
 function copyUploadedFile($source, $destination="")
 
 {
+    
+    
+    
 
 //Destino completo
 
-$this->path = $this->path . $destination . DS;
+//$this->path = $this->path . $destination ;
 
 //Cabeçalho de log de erro
 
@@ -184,6 +187,8 @@ if($this->verifyUpload($source))
 {
 
 $novo_arquivo = $this->verifyFileExists($source["name"]);
+
+
 
 if(move_uploaded_file($source["tmp_name"], $this->path . $novo_arquivo))
 

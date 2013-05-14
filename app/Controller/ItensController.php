@@ -21,13 +21,10 @@ class ItensController extends AppController{
         
         
     
-    //var_dump($this->data);
-    
-    
-    
-     if (!empty($this->data)) {
+    if (!empty($this->data)) {
 
-
+        $path_completo = APP.'webroot'.DS.'files'.DS . $this->Session->read('pedido_id');
+        
   
         if(empty($this->data['Item']['url_miolo']['tmp_name'])) {
 
@@ -37,15 +34,19 @@ class ItensController extends AppController{
 
         }
         
-        $path = $this->cria_pasta_pedido("files". "/".$this->Session->read('pedido_id'));
-
+        
+                
+        $path = $this->cria_pasta_pedido($path_completo);
+        
+        
+       
 
         $this->Upload->setPath($path);
         
         
         $codigo_cms = $this->Produto->read('cartaovisita', $this->data['produto_id']);
         
-      //  exit(0);
+      // exit(0);
         
        // var_dump( $codigo_cms);
       
@@ -64,13 +65,13 @@ class ItensController extends AppController{
         
         $novo_arquivo = $this->Upload->copyUploadedFile($this->data['Item']['url_capa'], '');
 //
-//        echo "<br><br><br><br>".$novo_arquivo;
-//        exit(0);
+// echo "<br><br><br><br>".$novo_arquivo;
+// exit(0);
 
         //grava dados do arquivo no banco de dados
         $this->request->data['Item']['pedido_id'] = $this->data['pedido_id'];
         $this->request->data['Item']['name_capa'] = $novo_arquivo;
-        $this->request->data['Item']['urlcapa'] = "http://lajedo.singulardigital.com.br/fgv/fgv_interno/app/webroot/".$path . "/".$novo_arquivo;
+        $this->request->data['Item']['urlcapa'] = "http://fgv.singulardigital.com.br/fgv_interno/app/webroot/files/".$this->Session->read('pedido_id') . "/".$novo_arquivo;
 
         //$this->request->data['Item']['url_capa']['file_name'] = $novo_arquivo;
 
@@ -91,7 +92,7 @@ class ItensController extends AppController{
         $this->request->data['Item']['pedido_id'] = $this->data['pedido_id'];
         $this->request->data['Item']['produto_id'] = $this->data['produto_id'];
         $this->request->data['Item']['name_miolo'] = $novo_arquivo;
-        $this->request->data['Item']['urlmiolo'] = "http://lajedo.singulardigital.com.br/fgv/fgv_interno/app/webroot/". $path . "/".$novo_arquivo;
+        $this->request->data['Item']['urlmiolo'] = "http://fgv.singulardigital.com.br/fgv_interno/app/webroot/files/".$this->Session->read('pedido_id') . "/".$novo_arquivo;
 
         $this->request->data['Item']['url_miolo']['file_name'] = $novo_arquivo;
 
@@ -128,15 +129,15 @@ class ItensController extends AppController{
     
      private function cria_pasta_pedido($path){
       
-      
-      
+     
       if(!is_dir($path)){
-          mkdir('files/'.$this->Session->read('pedido_id'));
-          
-          return  'files/'.$this->Session->read('pedido_id');
+          umask(0);
+          mkdir($path,0777,true);
+         
+          return  $path;
           
       }else{
-          return  'files/'.$this->Session->read('pedido_id');
+          return  $path;
           
       }
       
@@ -147,7 +148,7 @@ class ItensController extends AppController{
       
       if($this->Item->delete($id_item)){
           $this->Session->setFlash(__('Item removido com sucesso.', true));
-         $this->redirect(array('controller' => 'items', 'action' => 'add_item'));
+         $this->redirect(array('controller' => 'itens', 'action' => 'add_item'));
       }else{
           $this->Session->setFlash(__('Impossível apagar item.', false));
       }

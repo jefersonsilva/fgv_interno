@@ -9905,3 +9905,61 @@ Stack Trace:
 #1 /var/www/fgv/fgv_interno/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(PedidosController), Object(CakeRequest), Object(CakeResponse))
 #2 /var/www/fgv/fgv_interno/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2013-05-14 09:48:41 Error: [MissingControllerException] Controller class FgvInternoController could not be found.
+Exception Attributes: array (
+  'class' => 'FgvInternoController',
+  'plugin' => NULL,
+)
+Request URL: /fgv_interno/index.php/fgv_interno/
+Stack Trace:
+#0 /Users/jefersonsilva/Projects/singular/fgv_interno/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /Users/jefersonsilva/Projects/singular/fgv_interno/index.php(43): require('/Users/jeferson...')
+#2 {main}
+2013-05-14 09:48:45 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'fgv_interno\'',
+  'enabled' => true,
+)
+Request URL: /fgv_interno/index.php/pedidos/listar
+Stack Trace:
+#0 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Datasource/DboSource.php(262): Mysql->connect()
+#1 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/ConnectionManager.php(102): DboSource->__construct(Array)
+#2 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(3209): ConnectionManager::getDataSource('default')
+#3 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(1108): Model->setDataSource('default')
+#4 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(3231): Model->setSource('pedidos')
+#5 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(1319): Model->getDataSource()
+#6 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(1402): Model->schema()
+#7 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Controller/Component/PaginatorComponent.php(387): Model->hasField('id')
+#8 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Controller/Component/PaginatorComponent.php(142): PaginatorComponent->validateSort(Object(Pedido), Array, Array)
+#9 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Controller/Controller.php(1074): PaginatorComponent->paginate('Pedido', Array, Array)
+#10 /Users/jefersonsilva/Projects/singular/fgv_interno/app/Controller/PedidosController.php(156): Controller->paginate('Pedido')
+#11 [internal function]: PedidosController->listar()
+#12 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Controller/Controller.php(486): ReflectionMethod->invokeArgs(Object(PedidosController), Array)
+#13 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Routing/Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#14 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(PedidosController), Object(CakeRequest), Object(CakeResponse))
+#15 /Users/jefersonsilva/Projects/singular/fgv_interno/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 /Users/jefersonsilva/Projects/singular/fgv_interno/index.php(43): require('/Users/jeferson...')
+#17 {main}
+2013-05-14 09:48:52 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'fgv_interno\'',
+  'enabled' => true,
+)
+Request URL: /fgv_interno/index.php/pedidos/cria_pedido
+Stack Trace:
+#0 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Datasource/DboSource.php(262): Mysql->connect()
+#1 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/ConnectionManager.php(102): DboSource->__construct(Array)
+#2 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(3209): ConnectionManager::getDataSource('default')
+#3 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(1108): Model->setDataSource('default')
+#4 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(3231): Model->setSource('clientes')
+#5 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Model/Model.php(2688): Model->getDataSource()
+#6 /Users/jefersonsilva/Projects/singular/fgv_interno/app/Controller/PedidosController.php(118): Model->find('list', Array)
+#7 [internal function]: PedidosController->cria_pedido()
+#8 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Controller/Controller.php(486): ReflectionMethod->invokeArgs(Object(PedidosController), Array)
+#9 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Routing/Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#10 /Users/jefersonsilva/Projects/singular/fgv_interno/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(PedidosController), Object(CakeRequest), Object(CakeResponse))
+#11 /Users/jefersonsilva/Projects/singular/fgv_interno/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /Users/jefersonsilva/Projects/singular/fgv_interno/index.php(43): require('/Users/jeferson...')
+#13 {main}

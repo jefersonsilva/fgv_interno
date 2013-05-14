@@ -4,7 +4,7 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => '127.0.0.1',
+		'host' => '192.168.101.200',
 		'login' => 'lojasingular',
 		'password' => 'lojasingular',
 		'database' => 'fgv_interno',
