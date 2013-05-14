@@ -47,11 +47,11 @@ class EmailConfig {
 	public $smtp = array(
 		'transport' => 'Smtp',
 		'from' => array('jefersonsilva@ediouro.com.br' => 'FGV'),
-		'host' => 'ssl://smtp.gmail.com',
-		'port' => 465,
+		'host' => 'smtp.gmail.com',
+		'port' => 25,
 		'timeout' => 30,
 		'username' => 'eusoujeferson@gmail.com',
-		'password' => 'asd3671',
+		'password' => 'asd367123',
 		'client' => null,
 		'log' => true,
 		//'charset' => 'utf-8',
@@ -78,15 +78,25 @@ class EmailConfig {
 		'attachments' => null,
 		'emailFormat' => null,
 		'transport' => 'Smtp',
-		'host' => 'ssl://smtp.gmail.com',
+		'host' => 'smtp.gmail.com',
 		'port' => 25,
 		'timeout' => 30,
 		'username' => 'eusoujeferson@gmail.com',
-		'password' => 'asd3671',
+		'password' => 'asd367123',
 		'client' => null,
 		'log' => true,
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
+       
+        
+        public $fgv = array(
+        'from' => 'fgv@ediouro.com.br',    
+        'host' => 'ssl://smtp.gmail.com',
+        'port' => 465,
+        'username' => 'fgv@ediouro.com.br',
+        'password' => 'fgv@singular',
+        'transport' => 'Smtp'
+        );
 
 }

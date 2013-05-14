@@ -1,0 +1,13 @@
+# Ignorar arquivos específicos
+.DS_Store
+
+# Use curingas como
+*~
+*.swp
+
+# Ignorar todos os diretórios e arquivos em um diretório.
+app/tmp/**/* 
+
+#Ignorar uploadas
+
+app/webroot/files/**/*

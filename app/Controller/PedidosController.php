@@ -558,7 +558,7 @@ class PedidosController extends AppController {
              if(!empty($this->request->data['Pedido']['obs'])){
 
                     //pegando os dados do status atual
-                    $dados_status = $this->Pedido->read(array('Status.nome','Pedido.updated','Pedido.created'), $this->request->data['Pedido']['id']);
+                    $dados_status = $this->Pedido->read(array('Status.nome','Pedido.updated','Pedido.created' ,'Entradapedido.email','Entradapedido.id'), $this->request->data['Pedido']['id']);
 
                     $this->request->data['status_updated'] = date('Y-m-d H:i:s');
                     $this->request->data['status_id'] = 0;
@@ -578,8 +578,14 @@ class PedidosController extends AppController {
                           //salvando o histórico atual no historico      
                           $this->Historico->save($params_historico);
                           
-                          mail("jefersonsilva@ediouro.com.br", "Pedido cancelado", "Seu pedido foi cancelado");
+                          if(!empty($dados_status['Entradapedido']['email'])){
                           
+                            $Email = new CakeEmail();
+                            $Email->config('fgv');
+                            $Email->to($dados_status['Entradapedido']['email']);
+                            $Email->subject('Pedido Cancelado!');
+                            $Email->send('Desculpe, <br> seu Pedido de número' .$dados_status['Entradapedido']['id']. 'foi cancelado devido o motivo abaixo:  <br>'.$this->request->data['Pedido']['obs']);
+                          }
                           
                           $this->redirect(array('action' => 'listar'));
 
@@ -599,6 +605,18 @@ class PedidosController extends AppController {
         
         
         
+    }
+    
+    function teste_email(){
+        
+        
+        $Email = new CakeEmail();
+        $Email->config('fgv');
+        
+        $Email->to('eusoujeferson@gmail.com');
+        $Email->subject('About test');
+        $Email->send('vai');
+
     }
     
    
