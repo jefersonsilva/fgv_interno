@@ -4,14 +4,14 @@
 		<legend><?php echo __('Edit Cliente'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('nome');
-		echo $this->Form->input('street');
-		echo $this->Form->input('complemente');
-		echo $this->Form->input('city');
-		echo $this->Form->input('state');
-		echo $this->Form->input('zipcode');
-		echo $this->Form->input('country');
-		echo $this->Form->input('cms_client_code');
+                echo $this->Form->input('nome');
+		echo $this->Form->input('street', array('label'=>'Rua'));
+		echo $this->Form->input('complemente', array('label'=>'Complemento'));
+		echo $this->Form->input('city', array('label'=>'Cidade'));
+		echo $this->Form->input('state', array('label'=>'Estado'));
+		echo $this->Form->input('zipcode', array('label'=>'Cep'));
+		echo $this->Form->input('country', array('label'=>'País'));
+		echo $this->Form->input('cms_client_code', array('label'=>'Código CMS do cliente'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

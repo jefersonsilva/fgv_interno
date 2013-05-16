@@ -14,7 +14,8 @@ class ItensController extends AppController{
         $this->set('pedido_id', $this->Session->read('pedido_id'));
         $this->set('pedido_os', $this->Pedido->find('first',$params_pedido));
         $params_itens_pedido= array('fields'=>array('Item.id','Item.name_capa','Item.name_miolo','Item.paginas','Item.quantidade','Produto.nome', 'Produto.cartaovisita', 'Produto.codigo'), 'conditions'=>array('Item.pedido_id'=>$this->Session->read('pedido_id')));
-        
+        $params_cv = array('filds'=>array('Produto.id'),'conditions'=>array('Produto.cartaovisita'=> true));
+        $this->set('lista_cv', $this->Produto->find('list',$params_cv));
         $this->set('itens_pedido', $this->Item->find('all',$params_itens_pedido) );
     }
     public function insere_item(){
@@ -152,6 +153,10 @@ class ItensController extends AppController{
       }else{
           $this->Session->setFlash(__('Impossível apagar item.', false));
       }
+      
+  }
+  
+  function formato_cartao(){
       
   }
     

@@ -11,7 +11,7 @@
 			<?php echo h($cliente['Cliente']['nome']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Street'); ?></dt>
+		<dt><?php echo __('Rua'); ?></dt>
 		<dd>
 			<?php echo h($cliente['Cliente']['street']); ?>
 			&nbsp;

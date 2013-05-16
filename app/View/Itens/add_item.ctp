@@ -19,6 +19,18 @@
  */
 ?>
 
+<?php 
+//trecho de código abaixo para converter array do php em formato js
+ 
+        $array_js = "[";
+        foreach($lista_cv as $cv)
+        {
+            $array_js .= "'".$cv. "',";
+        }
+        
+        $array_js .= "]"
+ ?>
+
 <h2>Pedido Numero 
 <?php if(empty( $pedido_os['Pedido']['entradapedido_id'])):  ?>
     <?php echo $pedido_os['Pedido']['os'] ?>
@@ -95,10 +107,12 @@
   <legend><?php __('Add Item no pedido'); ?></legend>
 
   
-  <?php echo $this->Form->input('Formato', array('name'=>'produto_id', 'type' => 'select', 'options' => $produtos)); ?>
+  <?php echo $this->Form->input('Formato', array('name'=>'produto_id','onchange'=>"cv_ou_livro($array_js)", 'type' => 'select', 'options' => $produtos)); ?>
   
   <?php echo $this->Form->input('url_miolo', array('type'=>'file')); ?>
-  <?php echo $this->Form->input('url_capa', array('type'=>'file')); ?>
+  <div id="ItemUrlCapa">
+    <?php echo $this->Form->input('url_capa', array('type'=>'file', 'id'=>'url_capa')); ?>
+  </div>
   <?php echo $this->Form->input('quantidade'); ?>
   <?php echo $this->Form->input('paginas'); ?>
   <?php echo $this->Form->input('pedido_id',array('type'=>'hidden', 'name'=>'pedido_id', 'value'=>$pedido_id)); ?>

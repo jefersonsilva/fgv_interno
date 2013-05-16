@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email'); 
 class PedidosController extends AppController {
 
-    public $uses= array('Cliente', 'Pedido','Item', 'Status', 'Entradapedido', 'Historico', 'Produto');
+    public $uses= array('Cliente', 'Pedido','Item', 'Status', 'Entradapedido', 'Historico', 'Produto', 'Erro');
     var $components = array('Email');
 /**
  * index method
@@ -363,7 +363,8 @@ class PedidosController extends AppController {
             //passando informaco ao usuário que seu pedido foi enviado ao cms
             $this->Session->setFlash(__('O pedido '.$clientes['Entradapedido']['id']. ' foi enviado com sucesso para o CMS!! veja: '.$xml["payloadID"], true));
         }else{
-            
+            $params_erro = array('pedido_id'=>$pedido_id, 'mensagem' => $xml->Response->Status['text'], 'codigo'=>$xml->Response->Status['code']);
+            $this->Erro->save($params_erro);
             //passando informaco ao usuário que seu pedido teve problemas
             $this->Session->setFlash(__('O pedido '.$clientes['Entradapedido']['id']. ' está com problemas :( : '.$xml->Response->Status['text']. " Corrija-o e tente novamente", true));
             
@@ -558,7 +559,7 @@ class PedidosController extends AppController {
              if(!empty($this->request->data['Pedido']['obs'])){
 
                     //pegando os dados do status atual
-                    $dados_status = $this->Pedido->read(array('Status.nome','Pedido.updated','Pedido.created' ,'Entradapedido.email','Entradapedido.id'), $this->request->data['Pedido']['id']);
+                    $dados_status = $this->Pedido->read(array('Status.nome','Pedido.updated','Pedido.status_updated','Pedido.created' ,'Entradapedido.email','Entradapedido.id'), $this->request->data['Pedido']['id']);
 
                     $this->request->data['status_updated'] = date('Y-m-d H:i:s');
                     $this->request->data['status_id'] = 0;
@@ -582,9 +583,12 @@ class PedidosController extends AppController {
                           
                             $Email = new CakeEmail();
                             $Email->config('fgv');
+                            $Email->viewVars(array('numero_pedido' => $dados_status['Entradapedido']['id'], 'motivo'=> $this->request->data['Pedido']['obs']));
+                            $Email->template('cancelamento');
+                            
                             $Email->to($dados_status['Entradapedido']['email']);
                             $Email->subject('Pedido Cancelado!');
-                            $Email->send('Desculpe, <br> seu Pedido de número' .$dados_status['Entradapedido']['id']. 'foi cancelado devido o motivo abaixo:  <br>'.$this->request->data['Pedido']['obs']);
+                            $Email->send();
                           }
                           
                           $this->redirect(array('action' => 'listar'));

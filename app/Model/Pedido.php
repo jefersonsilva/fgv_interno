@@ -65,7 +65,7 @@ class Pedido extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		), 'Historico'
+		), 'Historico', 'Erro'
 	);
 
 }

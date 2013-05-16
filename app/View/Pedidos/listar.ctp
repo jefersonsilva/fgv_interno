@@ -18,7 +18,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 ?>
-
+    <script type=text/javascript>setTimeout('document.location=document.location',2000);</script>  
 
 
 <table>

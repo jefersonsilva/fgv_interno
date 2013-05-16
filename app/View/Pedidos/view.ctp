@@ -1,57 +1,114 @@
 <div class="pedidos view">
 <h2><?php  echo __('Pedido'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+		<dt><?php echo __('Id:'); ?></dt>
 		<dd>
 			<?php echo h($pedido['Pedido']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt><?php echo __('Criado:'); ?></dt>
 		<dd>
 			<?php echo h($pedido['Pedido']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Os'); ?></dt>
+		<dt><?php echo __('OS:'); ?></dt>
 		<dd>
-			<?php echo h($pedido['Pedido']['os']); ?>
+			<?php if (!empty($pedido['Pedido']['os'])): ?>
+                        <?php echo $pedido['Pedido']['os']; ?>
+                        <?php else: ?>
+                        <?php echo $pedido['Pedido']['entradapedido_id']; ?>
+                        <?php endif; ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Updated'); ?></dt>
+		<dt><?php echo __('Atualizado:'); ?></dt>
 		<dd>
 			<?php echo h($pedido['Pedido']['updated']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Payload'); ?></dt>
+		<dt><?php echo __('Resposta CMS:'); ?></dt>
 		<dd>
 			<?php echo h($pedido['Pedido']['payload']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Prioridade'); ?></dt>
+		<dt><?php echo __('Prioridade:'); ?></dt>
 		<dd>
 			<?php echo h($pedido['Pedido']['prioridade']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Baixado'); ?></dt>
-		<dd>
-			<?php echo h($pedido['Pedido']['baixado']); ?>
-			&nbsp;
-		</dd>
 		
-		<dt><?php echo __('Cliente'); ?></dt>
+		
+		<dt><?php echo __('Cliente:'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($pedido['Cliente']['nome'], array('controller' => 'clientes', 'action' => 'view', $pedido['Cliente']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Entradapedido'); ?></dt>
+		<dt><?php echo __('Solicitante:'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($pedido['Entradapedido']['nome'], array('controller' => 'entradapedidos', 'action' => 'view', $pedido['Entradapedido']['id'])); ?>
+			<?php echo $pedido['Entradapedido']['nome'] ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Status'); ?></dt>
+                <dt><?php echo __('OBS Solicitante:'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($pedido['Status']['nome'], array('controller' => 'statuses', 'action' => 'view', $pedido['Status']['id'])); ?>
+			<?php echo $pedido['Entradapedido']['obs'] ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Status:'); ?></dt>
+		<dd>
+			<?php echo $pedido['Status']['nome'] ?>
+			&nbsp;
+		</dd>
+                <dt><?php echo __('Obs interna:'); ?></dt>
+		<dd>
+			<?php echo h($pedido['Pedido']['obs']); ?>
+			&nbsp;
+		</dd>
+                <?php if(!empty($pedido['Erro'])):?>
+                    <dt><?php echo "."; ?> </dt>
+                    <dd>
+                        <h3>Erros de envio </h3>
+                    </dd>
+                    <?php foreach ($pedido['Erro'] as $erros): ?>
+                
+                            <dt><?php echo __('Data:'); ?></dt>
+                            <dd>
+                                    <?php echo $erros['created'] ?>
+                                    &nbsp;
+                            </dd>
+                            <dt><?php echo __('Código:'); ?></dt>
+                            <dd>
+                                    <?php echo $erros['codigo'] ?>
+                                    &nbsp;
+                            </dd>
+                            <dt><?php echo __('Mensagem:'); ?></dt>
+                            <dd>
+                                    <?php echo h($erros['mensagem']); ?>
+                                    &nbsp;
+                            </dd>
+                            <dt><?php echo ".  .  ."; ?></dt>
+                            <dd>
+                                    <?php echo ".  .  ."; ?>
+                                    
+                            </dd>
+                            <?php endforeach; ?>
+
+                            <dt><?php echo ".  .  ."; ?></dt>
+                            <dd>
+                                    <?php echo ".  .  ."; ?>
+                                    
+                            </dd>
+                            <dt> <?php echo "." ?> </dt>
+                            <dd>
+                                
+                                 <?php echo $this->Form->create('Pedido', array("action"=>"finaliza_pedido"));?>  
+                                    <?php echo $this->Form->input('pedido_id',array('type'=>'hidden', 'name'=>'pedido_id', 'value'=>$pedido['Pedido']['id'])); ?>
+
+                                    <?php echo $this->Form->submit("Enviar CMS"); ?>
+
+                                    <?php echo $this->form->end(); ?>  
+                            </dd>
+                            
+                            
+                 <?php endif; ?>
 	</dl>
 </div>
 <div class="actions">

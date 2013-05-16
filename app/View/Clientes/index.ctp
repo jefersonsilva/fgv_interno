@@ -3,14 +3,14 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('nome'); ?></th>
-			<th><?php echo $this->Paginator->sort('street'); ?></th>
-			<th><?php echo $this->Paginator->sort('complemente'); ?></th>
-			<th><?php echo $this->Paginator->sort('city'); ?></th>
-			<th><?php echo $this->Paginator->sort('state'); ?></th>
-			<th><?php echo $this->Paginator->sort('zipcode'); ?></th>
-			<th><?php echo $this->Paginator->sort('country'); ?></th>
-			<th><?php echo $this->Paginator->sort('cms_client_code'); ?></th>
+			<th><?php echo $this->Paginator->sort('Nome'); ?></th>
+			<th><?php echo $this->Paginator->sort('Rua'); ?></th>
+			<th><?php echo $this->Paginator->sort('Complemento'); ?></th>
+			<th><?php echo $this->Paginator->sort('Cidade'); ?></th>
+			<th><?php echo $this->Paginator->sort('Estado'); ?></th>
+			<th><?php echo $this->Paginator->sort('Cep'); ?></th>
+			<th><?php echo $this->Paginator->sort('País'); ?></th>
+			<th><?php echo $this->Paginator->sort('Código CMS do cliente'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($clientes as $cliente): ?>
@@ -27,7 +27,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $cliente['Cliente']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $cliente['Cliente']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $cliente['Cliente']['id']), null, __('Are you sure you want to delete # %s?', $cliente['Cliente']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $cliente['Cliente']['id']), null, __('Tem certeza que deseja apagar o  # %s?', $cliente['Cliente']['nome'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
