@@ -44,6 +44,7 @@ $cakeDescription = __d('SOGRA_dev', 'Singular Order gateway Request Apostilas');
                 echo $this->Html->script('thickbox.js');
                 echo $this->Html->script('jquery-migrate-1.1.1.min.js'); 
                 echo $this->Html->script('cv_ou_livro.js');
+                echo $this->Html->script('refresh');
 	?>
 </head>
 <body>

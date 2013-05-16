@@ -144,7 +144,9 @@ class PedidosController extends AppController {
      * @param type $parametro_ordenacao
      */
     
-    public function listar($parametro_ordenacao ='Pedido.id'){
+    public function cockipit($parametro_ordenacao ='Pedido.id'){
+        
+        $this->layout = 'empty';
         $params = array('limit'=>10, 'fields' =>array('Entradapedido.id', 'Entradapedido.nome','Entradapedido.created', 'Cliente.nome','Status.nome',
                                          'Pedido.status_id', 'Pedido.payload','Pedido.created','Pedido.id', 'Pedido.os','Pedido.status_updated',
                                          'Pedido.updated', 'Entradapedido.prazo_estimado', 'Pedido.prioridade'), 
@@ -158,6 +160,13 @@ class PedidosController extends AppController {
         $this->set('pedidos',$this->paginate('Pedido') );
         
     }
+    
+    public function listar($parametro_ordenacao ='Pedido.id'){
+        
+        
+        
+    }
+    
     
     public function detalhes_pedido($pedido_id){
         
