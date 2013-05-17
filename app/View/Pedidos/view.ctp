@@ -62,7 +62,7 @@
 			<?php echo h($pedido['Pedido']['obs']); ?>
 			&nbsp;
 		</dd>
-                <?php if(!empty($pedido['Erro'])):?>
+                <?php if(!empty($pedido['Erro'][0]['codigo'])):?>
                     <dt><?php echo "."; ?> </dt>
                     <dd>
                         <h3>Erros de envio </h3>
