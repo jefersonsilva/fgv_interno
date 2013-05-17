@@ -214,6 +214,9 @@ class PedidosController extends AppController {
         
         $lista_itens_pedidos = $this->Item->find('all',$params_itens_pedidos) ;
         
+        
+        if(!empty($lista_itens_pedidos)){
+        
    
         $montando_xml='<?xml version="1.0" encoding="ISO-8859-1"?>
                     <cXML xml:lang="en-US" version="1.2.005" payloadID="'.$pedido_id.'.1361983100142@sog.singulardigital.com.br"
@@ -381,6 +384,9 @@ class PedidosController extends AppController {
         
         $this->redirect(array('controller' => 'pedidos', 'action' => 'listar'));
         
+      }else{     $this->Session->setFlash(__("É necessário incluir itens no Pedido para envio", false));
+                  $this->redirect(array('controller' => 'itens', 'action' => 'add_item'));
+      }
         
         
     }

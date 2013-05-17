@@ -11,3 +11,4 @@ app/tmp/**/*
 #Ignorar uploadas
 
 app/webroot/files/**/*
+/app/tmp/
