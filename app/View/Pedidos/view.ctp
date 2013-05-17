@@ -39,7 +39,7 @@
 		
 		<dt><?php echo __('Cliente:'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($pedido['Cliente']['nome'], array('controller' => 'clientes', 'action' => 'view', $pedido['Cliente']['id'])); ?>
+			<?php echo $pedido['Cliente']['nome'] ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Solicitante:'); ?></dt>
