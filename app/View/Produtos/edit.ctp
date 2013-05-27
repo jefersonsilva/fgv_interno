@@ -4,18 +4,20 @@
 		<legend><?php echo __('Editar Produto'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('nome');
-		echo $this->Form->input('codigo');
-		echo $this->Form->input('cartaovisita');
+		echo $this->Form->input('nome', array('size'=>'70'));
+		echo $this->Form->input('codigo', array('size'=>'6', 'label'=> 'Código CMS'));
+		echo $this->Form->input('cartaovisita', array('label'=>'Cartão de visitas?'));
+		echo $this->Form->input('quantidade_minima_pagina', array('size'=>'5', 'label'=>'Quantidade mínima de páginas'));
+		echo $this->Form->input('quantidade_maxima_pagina', array('size'=>'5', 'label'=>'Quantidade máxima de páginas'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Salvar')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Produto.id')), null, __('Tem certeza que deseja apagar o  # %s?', $this->Form->value('Produto.id'))); ?></li>
+		
 		<li><?php echo $this->Html->link(__('Listar Produtos'), array('action' => 'index')); ?></li>
 		
 	</ul>

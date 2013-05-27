@@ -4,14 +4,14 @@
 		<legend><?php echo __('Edit Cliente'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-                echo $this->Form->input('nome');
-		echo $this->Form->input('street', array('label'=>'Rua'));
-		echo $this->Form->input('complemente', array('label'=>'Complemento'));
+                echo $this->Form->input('nome', array('size'=>'40'));
+		echo $this->Form->input('street', array('label'=>'Rua, número (ex: xxxxx, 000) ','size'=>'40'));
+		echo $this->Form->input('complemente', array('label'=>'Complemento','size'=>'40'));
 		echo $this->Form->input('city', array('label'=>'Cidade'));
-		echo $this->Form->input('state', array('label'=>'Estado'));
-		echo $this->Form->input('zipcode', array('label'=>'Cep'));
-		echo $this->Form->input('country', array('label'=>'País'));
-		echo $this->Form->input('cms_client_code', array('label'=>'Código CMS do cliente'));
+		echo $this->Form->input('state', array('label'=>'Estado', 'size'=>'2'));
+		echo $this->Form->input('zipcode', array('label'=>'Cep','size'=>'9'));
+		echo $this->Form->input('country', array('label'=>'País','size'=>'7'));
+		echo $this->Form->input('cms_client_code', array('label'=>'Código CMS do cliente','size'=>'5'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

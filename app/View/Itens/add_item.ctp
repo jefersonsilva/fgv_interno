@@ -109,10 +109,13 @@
   
   <?php echo $this->Form->input('Formato', array('name'=>'produto_id','onchange'=>"cv_ou_livro($array_js)", 'type' => 'select', 'options' => $produtos)); ?>
   
-  <?php echo $this->Form->input('url_miolo', array('type'=>'file')); ?>
+  
   <div id="ItemUrlCapa">
-    <?php echo $this->Form->input('url_capa', array('type'=>'file', 'id'=>'url_capa')); ?>
+    <?php echo $this->Form->input('url_capa', array('type'=>'file', 'id'=>'url_capa', 'onchange'=>"document.getElementById('file-falso').value = this.value" )); ?>
   </div>
+  
+  <?php echo $this->Form->input('url_miolo', array('type'=>'file', 'align'=>'right')); ?>
+  
   <?php echo $this->Form->input('quantidade'); ?>
   <?php echo $this->Form->input('paginas'); ?>
   <?php echo $this->Form->input('pedido_id',array('type'=>'hidden', 'name'=>'pedido_id', 'value'=>$pedido_id)); ?>
@@ -127,6 +130,6 @@
  <?php echo $this->Form->create('Pedido', array("action"=>"finaliza_pedido"));?>  
 <?php echo $this->Form->input('pedido_id',array('type'=>'hidden', 'name'=>'pedido_id', 'value'=>$pedido_id)); ?>
 
-<?php echo $this->Form->submit("Finalizar Pedido"); ?>
+<?php echo $this->Form->submit("Enviar Pedido"); ?>
 
 <?php echo $this->form->end(); ?>

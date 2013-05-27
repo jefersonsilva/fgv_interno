@@ -26,7 +26,7 @@ class ProdutosController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Produto->exists($id)) {
-			throw new NotFoundException(__('Produto invalido '));
+			throw new NotFoundException(__('Invalid produto'));
 		}
 		$options = array('conditions' => array('Produto.' . $this->Produto->primaryKey => $id));
 		$this->set('produto', $this->Produto->find('first', $options));
@@ -41,10 +41,10 @@ class ProdutosController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Produto->create();
 			if ($this->Produto->save($this->request->data)) {
-				$this->Session->setFlash(__('Produto Salvo com sucesso'));
+				$this->Session->setFlash(__('The produto has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('O produto nao pode ser salvo, tente novamente'));
+				$this->Session->setFlash(__('The produto could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -58,14 +58,14 @@ class ProdutosController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Produto->exists($id)) {
-			throw new NotFoundException(__('Produto invalido'));
+			throw new NotFoundException(__('Invalid produto'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Produto->save($this->request->data)) {
-				$this->Session->setFlash(__('Produto Salvo com sucesso'));
+				$this->Session->setFlash(__('The produto has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('O produto nao pode ser salvo, tente novamente'));
+				$this->Session->setFlash(__('The produto could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Produto.' . $this->Produto->primaryKey => $id));
@@ -84,14 +84,14 @@ class ProdutosController extends AppController {
 	public function delete($id = null) {
 		$this->Produto->id = $id;
 		if (!$this->Produto->exists()) {
-			throw new NotFoundException(__('Produto invalido'));
+			throw new NotFoundException(__('Invalid produto'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Produto->delete()) {
-			$this->Session->setFlash(__('Produto apagado com sucesso'));
+			$this->Session->setFlash(__('Produto deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Produto nao foi apagado'));
+		$this->Session->setFlash(__('Produto was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

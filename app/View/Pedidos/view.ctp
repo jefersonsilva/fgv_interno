@@ -1,17 +1,8 @@
 <div class="pedidos view">
 <h2><?php  echo __('Pedido'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id:'); ?></dt>
-		<dd>
-			<?php echo h($pedido['Pedido']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Criado:'); ?></dt>
-		<dd>
-			<?php echo h($pedido['Pedido']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('OS:'); ?></dt>
+		
+                <dt><?php echo __('OS:'); ?></dt>
 		<dd>
 			<?php if (!empty($pedido['Pedido']['os'])): ?>
                         <?php echo $pedido['Pedido']['os']; ?>
@@ -20,6 +11,13 @@
                         <?php endif; ?>
 			&nbsp;
 		</dd>
+            
+		<dt><?php echo __('Criado:'); ?></dt>
+		<dd>
+			<?php echo h($pedido['Pedido']['created']); ?>
+			&nbsp;
+		</dd>
+		
 		<dt><?php echo __('Atualizado:'); ?></dt>
 		<dd>
 			<?php echo h($pedido['Pedido']['updated']); ?>

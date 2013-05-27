@@ -11,14 +11,28 @@
 			<?php echo h($produto['Produto']['nome']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Codigo'); ?></dt>
+		<dt><?php echo __('Código CMS'); ?></dt>
 		<dd>
 			<?php echo h($produto['Produto']['codigo']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Cartaovisita'); ?></dt>
+		<dt><?php echo __('Cartão de visitas'); ?></dt>
 		<dd>
-			<?php echo h($produto['Produto']['cartaovisita']); ?>
+                    
+                <?php if(empty($produto['Produto']['cartaovisita'])): ?>
+                    Não
+                <?php else: ?>
+                    Sim
+                <?php endif; ?>
+		</dd>
+		<dt><?php echo __('Quantidade Mínima Pagina'); ?></dt>
+		<dd>
+			<?php echo h($produto['Produto']['quantidade_minima_pagina']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Quantidade Máxima Pagina'); ?></dt>
+		<dd>
+			<?php echo h($produto['Produto']['quantidade_maxima_pagina']); ?>
 			&nbsp;
 		</dd>
 	</dl>

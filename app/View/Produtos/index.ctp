@@ -4,8 +4,10 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('nome'); ?></th>
-			<th><?php echo $this->Paginator->sort('codigo'); ?></th>
-			<th><?php echo $this->Paginator->sort('cartaovisita'); ?></th>
+			<th><?php echo $this->Paginator->sort('codigo','Código CMS'); ?></th>
+			<th><?php echo $this->Paginator->sort('cartaovisita', 'Cartão de Visitas'); ?></th>
+			<th><?php echo $this->Paginator->sort('quantidade_minima_pagina', 'Quantidade mínima de páginas'); ?></th>
+			<th><?php echo $this->Paginator->sort('quantidade_maxima_pagina', 'Quantidade máxima de páginas'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($produtos as $produto): ?>
@@ -13,11 +15,17 @@
 		<td><?php echo h($produto['Produto']['id']); ?>&nbsp;</td>
 		<td><?php echo h($produto['Produto']['nome']); ?>&nbsp;</td>
 		<td><?php echo h($produto['Produto']['codigo']); ?>&nbsp;</td>
-		<td><?php echo h($produto['Produto']['cartaovisita']); ?>&nbsp;</td>
+		<?php if(empty($produto['Produto']['cartaovisita'])): ?>
+                    <td>Não</td>
+                <?php else: ?>
+                    <td>Sim</td>
+                <?php endif; ?>
+		<td><?php echo h($produto['Produto']['quantidade_minima_pagina']); ?>&nbsp;</td>
+		<td><?php echo h($produto['Produto']['quantidade_maxima_pagina']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $produto['Produto']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $produto['Produto']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $produto['Produto']['id']), null, __('Are you sure you want to delete # %s?', $produto['Produto']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $produto['Produto']['id']), null, __('Realmente deseja apagar # %s?', $produto['Produto']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -25,7 +33,7 @@
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} linhas do total de {:count} , começando na linha {:start}, e terminando na linha {:end}')
+	'format' => __('Página {:page} de {:pages}, total de {:count} produtos')
 	));
 	?>	</p>
 	<div class="paging">

@@ -16,32 +16,32 @@
 			<?php echo h($cliente['Cliente']['street']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Complemente'); ?></dt>
+		<dt><?php echo __('Complemento'); ?></dt>
 		<dd>
 			<?php echo h($cliente['Cliente']['complemente']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('City'); ?></dt>
+		<dt><?php echo __('Cidade'); ?></dt>
 		<dd>
 			<?php echo h($cliente['Cliente']['city']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('State'); ?></dt>
+		<dt><?php echo __('Estado'); ?></dt>
 		<dd>
 			<?php echo h($cliente['Cliente']['state']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Zipcode'); ?></dt>
+		<dt><?php echo __('Cepd'); ?></dt>
 		<dd>
 			<?php echo h($cliente['Cliente']['zipcode']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Country'); ?></dt>
+		<dt><?php echo __('País'); ?></dt>
 		<dd>
 			<?php echo h($cliente['Cliente']['country']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Cms Client Code'); ?></dt>
+		<dt><?php echo __('Cód. cms cliente'); ?></dt>
 		<dd>
 			<?php echo h($cliente['Cliente']['cms_client_code']); ?>
 			&nbsp;

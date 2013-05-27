@@ -6,25 +6,44 @@ App::uses('AppModel', 'Model');
  * @property Item $Item
  */
 class Produto extends AppModel {
-    
-    
-    
-    
-    public $validate = array(
-        'codigo' => array(
-                   'isUnique'=>
-                    array(
-                        'rule' => 'isUnique',
-                        'required' => true,
-                        'allowEmpty' => false,
-                        'message' => 'Este campo deve conter um valor numérico' 
-                        )
 
-                ),
-        
-        
-    );
-
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'codigo' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'quantidade_minima_pagina' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'quantidade_maxima_pagina' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 

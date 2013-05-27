@@ -8,7 +8,7 @@ class ItensController extends AppController{
     
     public function add_item(){
         
-        $params = array('fields' =>array('Produto.id','Produto.nome')); 
+        $params = array('fields' =>array('Produto.id','Produto.nome'),'order'=>array('Produto.nome'=>'asc')); 
         $params_pedido = array('fields' =>array('Pedido.os','Pedido.entradapedido_id'), 'conditions' =>array('Pedido.id'=>$this->Session->read('pedido_id') )); 
         $this->set('produtos',$this->Produto->find('list',$params) );    
         $this->set('pedido_id', $this->Session->read('pedido_id'));
