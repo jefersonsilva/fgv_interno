@@ -107,7 +107,7 @@
   <legend><?php __('Add Item no pedido'); ?></legend>
 
   
-  <?php echo $this->Form->input('Formato', array('name'=>'produto_id','onchange'=>"cv_ou_livro($array_js)", 'type' => 'select', 'options' => $produtos)); ?>
+  <?php echo $this->Form->input('Formato', array('name'=>'produto_id','onchange'=>"cv_ou_livro($array_js)", 'type' => 'select', 'options' => $produtos, 'empty' => '(Ecolha um formato)', 'required'=>true)); ?>
   
   
   <div id="ItemUrlCapa">

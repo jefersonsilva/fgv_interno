@@ -25,8 +25,8 @@
     <nav id="menu">
         <?php echo $this->Html->link($this->Html->image('home.jpg'),'/pages/home', array('target' => '_parent', 'escape' => false));?>
         <?php echo $this->Html->link($this->Html->image('admin.jpg'),'/pages/como_usar', array('target' => '_parent', 'escape' => false));?>
-        <?php echo $this->Html->link($this->Html->image('criar_pedido.jpg'),'/pedidos/cria_pedido', array('target' => '_parent', 'escape' => false));?>
+        <?php echo $this->Html->link($this->Html->image('enviar_pedido.jpg'),'/pedidos/cria_pedido', array('target' => '_parent', 'escape' => false));?>
         <?php echo $this->Html->link($this->Html->image('listar.jpg'),'/pedidos/listar', array('target' => '_parent', 'escape' => false));?>
-        <?php echo $this->Html->link($this->Html->image('login.jpg'),'/pages/bug', array('target' => '_parent', 'escape' => false));?>            
+        <?php echo $this->Html->link($this->Html->image('filtro.jpg'),'/pedidos/filtro'.'?height=200&width=350' , array('escape' => false, 'class' => 'thickbox'));?>            
     </nav>
 </div>

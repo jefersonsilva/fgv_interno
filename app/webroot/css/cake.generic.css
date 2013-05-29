@@ -745,6 +745,18 @@ pre {
     color: #aaa;
     display: inline;
 }
+.status_atual{
+    
+    color: #0b0;
+    display: inline;
+}
+
+.status_cancelado{
+    
+    color: #f00;
+    display: inline;
+}
+
 
 #table_status{
     
@@ -754,7 +766,7 @@ pre {
 
 #table_status td{
     
-    width: 30px;
+    width: 50px;
 
 }
 
@@ -776,4 +788,43 @@ pre {
     
     z-index: 100;
     
+}
+#status-cockpit{
+    
+    
+    width :480px; 
+    height:25px; 
+    /*background-color:#FF790E; */
+    
+    
+    
+    
+        
+}
+#status-cockpit ul{
+
+    list-style: none;
+}
+#status-cockpit ul li{
+    
+    display: inline;
+}
+
+
+#baixado{
+    margin-left: 50px; 
+}
+
+#enviado{
+    margin-left: 40px; 
+}
+
+
+.data-status{
+    font-size: 12px;
+}
+
+.inative  {
+    background-color: #666 !important;
+    color: #fff;
 }

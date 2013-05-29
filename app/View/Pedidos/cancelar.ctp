@@ -6,5 +6,6 @@
 <?php echo $this->Form->input('id', array('name'=>"data[Pedido][id]",'size'=>'8', 'type'=>'hidden', 'value'=>$id )); ?>
 <?php echo $this->Form->input('status_id', array('name'=>"data[Pedido][status_id]" ,'size'=>'8', 'type'=>'hidden', 'value'=>0 )); ?>
 <?php echo $this->Form->input('status_updated',array('type'=>'hidden', 'name'=>"data[Pedido][status_updated]", 'value'=>date('Y-m-d H:i:s'))); ?>
+<?php echo $this->Form->input('notifica', array('type'=> 'checkbox', 'label'=>'Não notificar o Cliente')); ?>
 <?php echo $this->Form->submit("Cancelar Pedido"); ?>
 <?php echo $this->Form->end(); ?>

@@ -9,6 +9,7 @@ App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email'); 
 class PedidosController extends AppController {
 
+    public $helpers = array('Time');
     public $uses= array('Cliente', 'Pedido','Item', 'Status', 'Entradapedido', 'Historico', 'Produto', 'Erro');
     var $components = array('Email');
 /**
@@ -147,11 +148,31 @@ class PedidosController extends AppController {
     public function cockipit($parametro_ordenacao ='Pedido.id'){
         
         $this->layout = 'empty';
-        $params = array('limit'=>10, 'fields' =>array('Entradapedido.id', 'Entradapedido.nome','Entradapedido.created', 'Cliente.nome','Status.nome',
+        
+        
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            if(!empty($this->data['Pedido']['Status'])){
+                $this->layout = 'default';
+                    $params = array('limit'=>50, 'fields' =>array('Entradapedido.id', 'Entradapedido.nome','Entradapedido.created', 'Cliente.nome','Status.nome',
+                                                     'Pedido.status_id', 'Pedido.payload','Pedido.created','Pedido.id', 'Pedido.os','Pedido.status_updated',
+                                                     'Pedido.updated', 'Entradapedido.prazo_estimado', 'Pedido.prioridade'),
+                                    'conditions' => array('not' =>array('Pedido.entradapedido_id'=>null), 'and'=>array('Pedido.status_id'=>$this->data['Pedido']['Status']) ),
+                                    'order' =>array($parametro_ordenacao=>'desc')
+                        );
+            }else{
+                $this->Session->setFlash(__('Escolha um status'));
+            }
+        }else{
+            
+            $params = array('limit'=>50, 'fields' =>array('Entradapedido.id', 'Entradapedido.nome','Entradapedido.created', 'Cliente.nome','Status.nome',
                                          'Pedido.status_id', 'Pedido.payload','Pedido.created','Pedido.id', 'Pedido.os','Pedido.status_updated',
-                                         'Pedido.updated', 'Entradapedido.prazo_estimado', 'Pedido.prioridade'), 
+                                         'Pedido.updated', 'Entradapedido.prazo_estimado', 'Pedido.prioridade'),
+                        'conditions' => array('not' =>array('Pedido.entradapedido_id'=>null)),
                         'order' =>array($parametro_ordenacao=>'desc')
             );
+            
+        }
         
         $this->paginate = $params;
         
@@ -565,11 +586,13 @@ class PedidosController extends AppController {
        
        
        
-       
+      
        
        
        
          if ($this->request->is('post') || $this->request->is('put')) {
+             
+             
 
              if(!empty($this->request->data['Pedido']['obs'])){
 
@@ -594,7 +617,7 @@ class PedidosController extends AppController {
                           //salvando o histórico atual no historico      
                           $this->Historico->save($params_historico);
                           
-                          if(!empty($dados_status['Entradapedido']['email'])){
+                          if(!empty($dados_status['Entradapedido']['email']) && ($this->data['Pedido']['notifica'] == 0) ){
                           
                             $Email = new CakeEmail();
                             $Email->config('fgv');
@@ -636,6 +659,33 @@ class PedidosController extends AppController {
         $Email->subject('About test');
         $Email->send('vai');
 
+    }
+    
+    function filtro(){
+        
+        $this->layout = 'empty';
+        $parametro_ordenacao = 'Pedido.status_updated';
+        
+        
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            
+        
+        $params = array('limit'=>10, 'fields' =>array('Entradapedido.id', 'Entradapedido.nome','Entradapedido.created', 'Cliente.nome','Status.nome',
+                                         'Pedido.status_id', 'Pedido.payload','Pedido.created','Pedido.id', 'Pedido.os','Pedido.status_updated',
+                                         'Pedido.updated', 'Entradapedido.prazo_estimado', 'Pedido.prioridade'),
+                        'conditions' => array('Pedido.status_id'=>$this->data['Pedido']['Status']),
+                        'order' =>array($parametro_ordenacao=>'desc')
+            );
+        
+        $this->paginate = $params;
+        
+        $lista_pedidos =  $this->paginate('Pedido');
+
+        $this->set('pedidos',$this->paginate('Pedido') );
+        } else {
+                
+        }      
     }
     
    

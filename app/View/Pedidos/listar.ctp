@@ -36,7 +36,9 @@ function carrega_pagina(){
 
         })  
  }
- window.setInterval(carrega_pagina, 2000);
+ 
+ carrega_pagina();
+ window.setInterval(carrega_pagina, 50000);
 </script>
 <?php echo $this->Html->image("ajax-loader.gif", array("id" => "carregando"))?>
 
